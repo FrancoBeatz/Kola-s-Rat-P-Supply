@@ -79,12 +79,22 @@ const App: React.FC = () => {
             <span className="text-toxic-red font-bold block mt-2">GUARANTEED RESULTS.</span>
           </p>
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#products" className="px-8 py-4 bg-toxic-red text-white font-bold text-lg rounded hover:bg-red-700 transition shadow-[0_0_20px_rgba(255,0,0,0.4)] flex items-center justify-center gap-2">
+            <a 
+              href="https://wa.me/27608564191?text=Hi%20Kola,%20I%20want%20to%20buy%20rat%20poison."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-4 bg-toxic-red text-white font-bold text-lg rounded hover:bg-red-700 transition shadow-[0_0_20px_rgba(255,0,0,0.4)] flex items-center justify-center gap-2"
+            >
               <ShoppingCart size={20} />
               BUY POISON
             </a>
-            <a href="#contact" className="px-8 py-4 border border-white text-white font-bold text-lg rounded hover:bg-white hover:text-black transition flex items-center justify-center gap-2">
-              <Phone size={20} />
+            <a 
+              href="https://wa.me/27608564191?text=Hi%20Kola,%20I%20have%20an%20enquiry." 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-4 border border-white text-white font-bold text-lg rounded hover:bg-white hover:text-black transition flex items-center justify-center gap-2"
+            >
+              <MessageSquareWarning size={20} />
               CONTACT US
             </a>
           </div>
@@ -162,9 +172,14 @@ const App: React.FC = () => {
                <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-toxic-red transition">SINGLE HIT</h3>
                <div className="text-4xl font-black text-white mb-6">R15<span className="text-lg font-normal text-gray-500"> / item</span></div>
                <p className="text-gray-400 mb-8 h-12">Perfect for small infestations or a trial run. One dose, one kill.</p>
-               <button className="w-full py-4 border border-toxic-red text-toxic-red font-bold rounded uppercase hover:bg-toxic-red hover:text-white transition">
+               <a 
+                 href="https://wa.me/27608564191?text=Hi%20Kola,%20I%20want%20to%20buy%20the%20Single%20Hit%20Rat%20Poison%20for%20R15."
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 className="block w-full text-center py-4 border border-toxic-red text-toxic-red font-bold rounded uppercase hover:bg-toxic-red hover:text-white transition"
+               >
                  Order via WhatsApp
-               </button>
+               </a>
             </div>
 
             {/* Subscription */}
@@ -175,9 +190,14 @@ const App: React.FC = () => {
                <h3 className="text-2xl font-bold text-white mb-2">WARLORD SUPPLY</h3>
                <div className="text-4xl font-black text-toxic-red mb-6">R150<span className="text-lg font-normal text-gray-400"> / month</span></div>
                <p className="text-gray-300 mb-8 h-12">Total home protection. Monthly refill delivery for constant vigilance.</p>
-               <button className="w-full py-4 bg-toxic-red text-white font-bold rounded uppercase hover:bg-red-700 transition shadow-lg">
+               <a 
+                 href="https://wa.me/27608564191?text=Hi%20Kola,%20I%20want%20to%20start%20the%20Warlord%20Supply%20subscription%20for%20R150/month."
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 className="block w-full text-center py-4 bg-toxic-red text-white font-bold rounded uppercase hover:bg-red-700 transition shadow-lg"
+               >
                  Start Subscription
-               </button>
+               </a>
             </div>
           </div>
         </div>
@@ -189,12 +209,12 @@ const App: React.FC = () => {
           <h2 className="text-4xl font-horror text-toxic-red mb-12">GET IN TOUCH</h2>
           
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="flex flex-col items-center p-6 bg-black rounded-lg border border-neutral-800">
-              <Phone className="w-12 h-12 text-toxic-red mb-4" />
-              <h3 className="text-xl font-bold mb-2">CALL US</h3>
-              <p className="text-gray-400">060 856 4191</p>
+            <a href="tel:0608564191" className="flex flex-col items-center p-6 bg-black rounded-lg border border-neutral-800 hover:border-toxic-red hover:bg-neutral-900 transition group cursor-pointer">
+              <Phone className="w-12 h-12 text-toxic-red mb-4 group-hover:animate-pulse" />
+              <h3 className="text-xl font-bold mb-2 group-hover:text-white">CALL US</h3>
+              <p className="text-gray-400 group-hover:text-white">060 856 4191</p>
               <p className="text-xs text-gray-500 mt-2">Available 24/7 for Emergencies</p>
-            </div>
+            </a>
 
             <div className="flex flex-col items-center p-6 bg-black rounded-lg border border-neutral-800">
               <MapPin className="w-12 h-12 text-toxic-red mb-4" />
