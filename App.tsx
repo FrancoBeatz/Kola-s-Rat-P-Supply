@@ -1,10 +1,29 @@
 import React, { useState } from 'react';
-import { Phone, MapPin, Skull, ShieldAlert, Zap, ShoppingCart, Menu, X, MessageSquareWarning } from 'lucide-react';
+import { Phone, MapPin, Skull, ShieldAlert, Zap, ShoppingCart, Menu, X, MessageSquareWarning, Star, Mail, User, Send } from 'lucide-react';
 import RatAnimation from './components/RatAnimation';
 import AiAdvisor from './components/AiAdvisor';
 
 const App: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'sent'>('idle');
+
+  // Testimonials Data
+  const testimonials = [
+    { name: "Thabo M.", location: "Tembisa", text: "The rats were running my house like they paid rent. Kola's mix sorted them out in one night. Respect." },
+    { name: "Grace N.", location: "Kempton Park", text: "I was skeptical about the R15 packet but it works better than the expensive stuff from the mall. No more scratching in the roof." },
+    { name: "Sipho K.", location: "Midrand", text: "Subscription service is a life saver. I keep the perimeter secure now. My garage is finally safe." }
+  ];
+
+  const handleContactSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormStatus('sending');
+    // Simulate API call
+    setTimeout(() => {
+      setFormStatus('sent');
+      // Reset after 3 seconds
+      setTimeout(() => setFormStatus('idle'), 3000);
+    }, 1500);
+  };
 
   return (
     <div className="min-h-screen bg-black text-white font-sans relative overflow-x-hidden selection:bg-red-900 selection:text-white">
@@ -39,6 +58,7 @@ const App: React.FC = () => {
             {/* Desktop Menu */}
             <div className="hidden md:flex space-x-8 items-center">
               <a href="#products" className="text-gray-300 hover:text-toxic-red transition-colors font-bold tracking-wider">PRODUCTS</a>
+              <a href="#testimonials" className="text-gray-300 hover:text-toxic-red transition-colors font-bold tracking-wider">REVIEWS</a>
               <a href="#about" className="text-gray-300 hover:text-toxic-red transition-colors font-bold tracking-wider">ABOUT</a>
               <a href="#contact" className="text-gray-300 hover:text-toxic-red transition-colors font-bold tracking-wider">CONTACT</a>
               <a href="tel:0608564191" className="bg-toxic-red px-4 py-2 rounded text-white font-bold hover:bg-red-700 transition transform hover:scale-105 shadow-[0_0_10px_#ff0000]">
@@ -60,6 +80,7 @@ const App: React.FC = () => {
           <div className="md:hidden bg-neutral-900 border-b border-toxic-red">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               <a href="#products" className="block px-3 py-2 text-base font-bold text-gray-300 hover:text-toxic-red hover:bg-neutral-800" onClick={() => setMobileMenuOpen(false)}>PRODUCTS</a>
+              <a href="#testimonials" className="block px-3 py-2 text-base font-bold text-gray-300 hover:text-toxic-red hover:bg-neutral-800" onClick={() => setMobileMenuOpen(false)}>REVIEWS</a>
               <a href="#about" className="block px-3 py-2 text-base font-bold text-gray-300 hover:text-toxic-red hover:bg-neutral-800" onClick={() => setMobileMenuOpen(false)}>ABOUT</a>
               <a href="#contact" className="block px-3 py-2 text-base font-bold text-gray-300 hover:text-toxic-red hover:bg-neutral-800" onClick={() => setMobileMenuOpen(false)}>CONTACT</a>
             </div>
@@ -203,32 +224,128 @@ const App: React.FC = () => {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <section id="testimonials" className="relative z-10 py-24 bg-neutral-900/50 border-t border-neutral-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-horror text-toxic-red mb-4">SURVIVOR STORIES</h2>
+            <p className="text-gray-400">Real people. Real results. Dead rats.</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {testimonials.map((t, i) => (
+              <div key={i} className="bg-black border border-neutral-800 p-6 rounded-lg hover:border-toxic-red transition duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+                <div className="flex gap-1 text-toxic-red mb-4">
+                  {[...Array(5)].map((_, i) => <Star key={i} size={16} fill="currentColor" />)}
+                </div>
+                <p className="text-gray-300 italic mb-6">"{t.text}"</p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-neutral-800 rounded-full flex items-center justify-center text-toxic-red font-bold">
+                    {t.name[0]}
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-white text-sm">{t.name}</h4>
+                    <span className="text-xs text-neutral-500">{t.location}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Contact Section */}
       <section id="contact" className="relative z-10 py-24 bg-neutral-900 border-t border-neutral-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-horror text-toxic-red mb-12">GET IN TOUCH</h2>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-horror text-toxic-red mb-4">GET IN TOUCH</h2>
+            <p className="text-gray-400">We don't bite. Our poison does.</p>
+          </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
-            <a href="tel:0608564191" className="flex flex-col items-center p-6 bg-black rounded-lg border border-neutral-800 hover:border-toxic-red hover:bg-neutral-900 transition group cursor-pointer">
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            <a href="tel:0608564191" className="flex flex-col items-center p-6 bg-black rounded-lg border border-neutral-800 hover:border-toxic-red hover:bg-neutral-900 transition group cursor-pointer text-center">
               <Phone className="w-12 h-12 text-toxic-red mb-4 group-hover:animate-pulse" />
               <h3 className="text-xl font-bold mb-2 group-hover:text-white">CALL US</h3>
               <p className="text-gray-400 group-hover:text-white">060 856 4191</p>
               <p className="text-xs text-gray-500 mt-2">Available 24/7 for Emergencies</p>
             </a>
 
-            <div className="flex flex-col items-center p-6 bg-black rounded-lg border border-neutral-800">
+            <div className="flex flex-col items-center p-6 bg-black rounded-lg border border-neutral-800 text-center">
               <MapPin className="w-12 h-12 text-toxic-red mb-4" />
               <h3 className="text-xl font-bold mb-2">VISIT HQ</h3>
               <p className="text-gray-400">325 Sedibeng Section</p>
               <p className="text-gray-400">Tembisa, South Africa</p>
             </div>
 
-            <div className="flex flex-col items-center p-6 bg-black rounded-lg border border-neutral-800">
+            <div className="flex flex-col items-center p-6 bg-black rounded-lg border border-neutral-800 text-center">
               <MessageSquareWarning className="w-12 h-12 text-toxic-red mb-4" />
               <h3 className="text-xl font-bold mb-2">WHATSAPP</h3>
               <p className="text-gray-400">Direct Order Line</p>
               <a href="https://wa.me/27608564191" className="text-toxic-red mt-2 hover:underline">Chat Now &rarr;</a>
             </div>
+          </div>
+
+          {/* Contact Form */}
+          <div className="max-w-2xl mx-auto bg-black p-8 rounded-lg border border-neutral-800 relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-4 opacity-10">
+              <Skull size={100} className="text-toxic-red transform rotate-12" />
+            </div>
+            
+            <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2 relative z-10">
+              <Mail className="text-toxic-red" /> SEND A SIGNAL
+            </h3>
+
+            {formStatus === 'sent' ? (
+              <div className="bg-neutral-900 border border-green-900 text-green-400 p-6 rounded text-center animate-pulse">
+                <p className="font-bold text-lg">MESSAGE RECEIVED</p>
+                <p className="text-sm">We will respond shortly.</p>
+              </div>
+            ) : (
+              <form onSubmit={handleContactSubmit} className="space-y-4 relative z-10">
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="space-y-1">
+                    <label className="text-xs text-gray-500 font-bold uppercase ml-1">Name</label>
+                    <div className="relative">
+                      <User className="absolute left-3 top-3 text-gray-500" size={18} />
+                      <input 
+                        type="text" 
+                        required
+                        placeholder="Your Name"
+                        className="w-full bg-neutral-900 border border-neutral-800 rounded p-3 pl-10 text-white focus:border-toxic-red focus:outline-none transition-colors"
+                      />
+                    </div>
+                  </div>
+                  <div className="space-y-1">
+                    <label className="text-xs text-gray-500 font-bold uppercase ml-1">Email</label>
+                    <div className="relative">
+                      <Mail className="absolute left-3 top-3 text-gray-500" size={18} />
+                      <input 
+                        type="email" 
+                        required
+                        placeholder="email@address.com"
+                        className="w-full bg-neutral-900 border border-neutral-800 rounded p-3 pl-10 text-white focus:border-toxic-red focus:outline-none transition-colors"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-1">
+                  <label className="text-xs text-gray-500 font-bold uppercase ml-1">Message</label>
+                  <textarea 
+                    rows={4}
+                    required
+                    placeholder="How can we help you kill rats?"
+                    className="w-full bg-neutral-900 border border-neutral-800 rounded p-3 text-white focus:border-toxic-red focus:outline-none transition-colors"
+                  ></textarea>
+                </div>
+                <button 
+                  type="submit" 
+                  disabled={formStatus === 'sending'}
+                  className="w-full bg-toxic-red text-white font-bold py-3 rounded hover:bg-red-700 transition flex items-center justify-center gap-2 disabled:opacity-50"
+                >
+                  {formStatus === 'sending' ? 'TRANSMITTING...' : <><Send size={18} /> TRANSMIT TO HQ</>}
+                </button>
+              </form>
+            )}
           </div>
         </div>
       </section>
