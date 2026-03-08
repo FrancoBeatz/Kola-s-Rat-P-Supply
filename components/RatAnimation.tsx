@@ -8,7 +8,7 @@ const RatIcon = ({ className }: { className?: string }) => (
     className={className}
     xmlns="http://www.w3.org/2000/svg"
   >
-    <path d="M12 2C10.9 2 10 2.9 10 4V6H5C3.9 6 3 6.9 3 8V14C3 15.1 3.9 16 5 16H7V18C7 19.1 7.9 20 9 20H15C16.1 20 17 19.1 17 18V16H19C20.1 16 21 15.1 21 14V8C21 6.9 20.1 6 19 6H14V4C14 2.9 13.1 2 12 2ZM5 8H19V14H5V8ZM9 16H15V18H9V16ZM12 4H14V6H10V4H12Z" fillOpacity="0" />
+    <path d="M12 2C10.9 2 10 2.9 10 4V6H5C3.9 6 3 6.9 3 8V14C3 15.1 3.9 16 5 16H7V18C7 19.1 7.9 20 9 20H15C16.1 20 17 19.1 17 18V16H19C20.1 16 21 15.1 21 14V8C21 6.9 20.1 6 19 6H14V4C14 2.9 13.1 2 12 2ZM5 8H19V14H5V8ZM9 16H15V18H9V16ZM12 4H14V6H10V4H12Z" />
     <path d="M21.5 13C21.5 13 18 13.5 16 12C15 11.25 15 9 15 9C15 9 13.5 8 11.5 8C9.5 8 8 9 8 9C8 9 8 11.25 7 12C5 13.5 1.5 13 1.5 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
     <path d="M16 12L22 18M7 12L1 18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
     <circle cx="10" cy="10" r="1" fill="red" />

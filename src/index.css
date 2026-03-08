@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@theme {
+  --font-horror: "Creepster", cursive;
+  --font-sans: "Roboto", sans-serif;
+  
+  --color-toxic-red: #ff0000;
+  --color-blood-dark: #8a0000;
+}
+
+@layer base {
+  body {
+    @apply bg-black text-white overflow-x-hidden;
+  }
+}
+
+@layer utilities {
+  .text-shadow-red {
+    text-shadow: 0 0 10px #ff0000;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #1a1a1a;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #8a0000;
+    border-radius: 4px;
+  }
+}
+
+@keyframes glitch {
+  2%, 64% { transform: translate(2px,0) skew(0deg); }
+  4%, 60% { transform: translate(-2px,0) skew(0deg); }
+  62% { transform: translate(0,0) skew(5deg); }
+}
+
+.animate-glitch {
+  animation: glitch 1s linear infinite;
+}
